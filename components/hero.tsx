@@ -58,7 +58,7 @@ export function Hero() {
           </p>
         </div>
 
-        <div data-animate className="mt-12 md:mt-0 flex w-full max-w-xs flex-col items-center gap-4 sm:max-w-none sm:flex-row sm:gap-6">
+        <div data-animate className="mt-12 md:mt-0 flex w-full max-w-xs flex-col items-center justify-center gap-4 sm:max-w-none sm:flex-row sm:justify-center sm:gap-6">
           <a
             href="#contacto"
             className="inline-flex w-full items-center justify-center bg-gold px-8 py-4 font-sans text-[11px] font-[700] uppercase tracking-[0.18em] text-navy-deep shadow-lg shadow-gold/10 transition-all hover:bg-gold-light hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
