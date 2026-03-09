@@ -123,7 +123,7 @@ export function ContactForm() {
             {/* Email */}
             <div>
               <label htmlFor="email" className={labelClass}>
-                {t("contact.name_label").includes("Email") ? t("contact.name_label") : "Email"}
+                {t("contact.email_label")}
               </label>
               <input
                 id="email"
@@ -131,7 +131,7 @@ export function ContactForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="tu@email.com"
+                placeholder={t("contact.email_placeholder")}
                 className={inputBase}
                 disabled={status === "loading"}
               />
