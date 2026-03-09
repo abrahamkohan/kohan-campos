@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react"
 import { ScrollReveal } from "./scroll-reveal"
 import { Check } from "lucide-react"
+import { useLanguage } from "@/components/language-context"
 import {
   Dialog,
   DialogContent,
@@ -11,113 +12,22 @@ import {
   DialogDescription,
 } from "./ui/dialog"
 
-const countries = ["Argentina", "Brasil", "Paraguay", "Otro"]
-const budgets = [
-  "USD 30k - 50k",
-  "USD 50k - 100k",
-  "USD 100k+",
-  "Prefiero no indicar",
-]
+export function ContactForm() {
+  const { t } = useLanguage()
 
-const i18n = {
-  es: {
-    tag: "Contacto",
-    heading: "¿Querés invertir con criterio?",
-    sub: "Completá el formulario y te contactamos dentro de las 24hs.",
-    labelName: "Nombre completo",
-    placeholderName: "Tu nombre",
-    labelEmail: "Correo electrónico",
-    placeholderEmail: "tu@email.com",
-    labelCountry: "País de residencia",
-    placeholderCountry: "Seleccionar",
-    labelBudget: "Capital disponible para inversión",
-    placeholderBudget: "Seleccionar (opcional)",
-    labelMessage: "Mensaje / Consulta",
-    placeholderMessage: "Tu consulta...",
-    submit: "Enviar Consulta",
-    sending: "Enviando...",
-    success: "✓ Consulta enviada. Te enviamos una confirmación por correo.",
-    successPopupTitle: "¡Consulta enviada!",
-    successPopupSub: "Te enviamos una confirmación por correo. Nos pondremos en contacto con vos en menos de 24hs.",
-    error: "Hubo un error. Por favor escribinos directamente.",
-    privacy: "Tu información es confidencial. Nunca compartimos datos con terceros.",
-  },
-  en: {
-    tag: "Contact",
-    heading: "Ready to invest with criteria?",
-    sub: "Fill out the form and we'll get back to you within 24 hours.",
-    labelName: "Full name",
-    placeholderName: "Your name",
-    labelEmail: "Email address",
-    placeholderEmail: "you@email.com",
-    labelCountry: "Country of residence",
-    placeholderCountry: "Select",
-    labelBudget: "Available investment capital",
-    placeholderBudget: "Select (optional)",
-    labelMessage: "Message / Inquiry",
-    placeholderMessage: "Your inquiry...",
-    submit: "Send Inquiry",
-    sending: "Sending...",
-    success: "✓ Inquiry sent. We've sent you a confirmation email.",
-    successPopupTitle: "Inquiry sent!",
-    successPopupSub: "We've sent you a confirmation email. We will contact you within 24 hours.",
-    error: "Something went wrong. Please contact us directly.",
-    privacy: "Your information is confidential. We never share data with third parties.",
-  },
-  pt: {
-    tag: "Contato",
-    heading: "Quer investir com critério?",
-    sub: "Preencha o formulário e entraremos em contato em até 24 horas.",
-    labelName: "Nome completo",
-    placeholderName: "Seu nome",
-    labelEmail: "Endereço de e-mail",
-    placeholderEmail: "voce@email.com",
-    labelCountry: "País de residência",
-    placeholderCountry: "Selecionar",
-    labelBudget: "Capital disponível para investimento",
-    placeholderBudget: "Selecionar (opcional)",
-    labelMessage: "Mensagem / Consulta",
-    placeholderMessage: "Sua consulta...",
-    submit: "Enviar Consulta",
-    sending: "Enviando...",
-    success: "✓ Consulta enviada. Enviamos um e-mail de confirmação para você.",
-    successPopupTitle: "Consulta enviada!",
-    successPopupSub: "Enviamos um e-mail de confirmação. Entraremos em contato em até 24 horas.",
-    error: "Ocorreu um erro. Por favor, entre em contato directamente.",
-    privacy: "Suas informações são confidenciais. Nunca compartilhamos dados com terceiros.",
-  },
-  de: {
-    tag: "Kontakt",
-    heading: "Möchten Sie gezielt investieren?",
-    sub: "Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden.",
-    labelName: "Vollständiger Name",
-    placeholderName: "Ihr Name",
-    labelEmail: "E-Mail-Adresse",
-    placeholderEmail: "sie@email.com",
-    labelCountry: "Wohnsitzland",
-    placeholderCountry: "Auswählen",
-    labelBudget: "Verfügbares Investitionskapital",
-    placeholderBudget: "Auswählen (optional)",
-    labelMessage: "Nachricht / Anfrage",
-    placeholderMessage: "Ihre Anfrage...",
-    submit: "Anfrage senden",
-    sending: "Wird gesendet...",
-    success: "✓ Anfrage gesendet. Wir haben Ihnen eine Bestätigungs-E-Mail geschickt.",
-    successPopupTitle: "Anfrage gesendet!",
-    successPopupSub: "Wir haben Ihnen eine Bestätigungs-E-Mail geschickt. Wir melden uns innerhalb von 24 Stunden.",
-    error: "Ein Fehler ist aufgetreten. Bitte kontaktieren Sie uns direkt.",
-    privacy: "Ihre Daten sind vertraulich. Wir geben keine Daten an Dritte weiter.",
-  },
-}
+  const countries = [
+    { value: "Argentina", label: t("contact.country_arg") },
+    { value: "Brasil", label: t("contact.country_bra") },
+    { value: "Paraguay", label: t("contact.country_pry") },
+    { value: "Otro", label: t("contact.country_other") },
+  ]
 
-type Lang = keyof typeof i18n
-
-interface ContactFormProps {
-  lang?: Lang
-}
-
-export function ContactForm({ lang = "es" }: ContactFormProps) {
-  const t = i18n[lang]
+  const budgets = [
+    { value: "USD 30k - 50k", label: t("contact.budget_30_50") },
+    { value: "USD 50k - 100k", label: t("contact.budget_50_100") },
+    { value: "USD 100k+", label: t("contact.budget_100plus") },
+    { value: "Prefiero no indicar", label: t("contact.budget_na") },
+  ]
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -175,19 +85,19 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
       <div className="mx-auto max-w-[600px]">
         <ScrollReveal>
           <span className="mb-4 inline-block font-sans text-xs font-[600] uppercase tracking-[0.3em] text-gold">
-            {t.tag}
+            {t("contact.tag")}
           </span>
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
           <h2 className="mb-3 font-sans text-[clamp(1.8rem,3.5vw,3rem)] font-[200] leading-[1.15] text-kc-white">
-            {t.heading}
+            {t("contact.title")}
           </h2>
         </ScrollReveal>
 
         <ScrollReveal delay={150}>
           <p className="mb-12 font-sans text-base font-[300] text-kc-white/60 md:mb-14">
-            {t.sub}
+            {t("contact.subtitle")}
           </p>
         </ScrollReveal>
 
@@ -196,7 +106,7 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
             {/* Nombre */}
             <div>
               <label htmlFor="name" className={labelClass}>
-                {t.labelName}
+                {t("contact.name_label")}
               </label>
               <input
                 id="name"
@@ -204,7 +114,7 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={t.placeholderName}
+                placeholder={t("contact.name_placeholder")}
                 className={inputBase}
                 disabled={status === "loading"}
               />
@@ -213,7 +123,7 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
             {/* Email */}
             <div>
               <label htmlFor="email" className={labelClass}>
-                {t.labelEmail}
+                {t("contact.name_label").includes("Email") ? t("contact.name_label") : "Email"}
               </label>
               <input
                 id="email"
@@ -221,7 +131,7 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={t.placeholderEmail}
+                placeholder="tu@email.com"
                 className={inputBase}
                 disabled={status === "loading"}
               />
@@ -230,7 +140,7 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
             {/* País */}
             <div>
               <label htmlFor="country" className={labelClass}>
-                {t.labelCountry}
+                {t("contact.country_label")}
               </label>
               <select
                 id="country"
@@ -241,11 +151,11 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
                 style={selectStyle}
               >
                 <option value="" className="bg-navy-deep text-kc-white/50">
-                  {t.placeholderCountry}
+                  {t("contact.country_select")}
                 </option>
                 {countries.map((c) => (
-                  <option key={c} value={c} className="bg-navy-deep text-kc-white">
-                    {c}
+                  <option key={c.value} value={c.value} className="bg-navy-deep text-kc-white">
+                    {c.label}
                   </option>
                 ))}
               </select>
@@ -254,7 +164,7 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
             {/* Capital */}
             <div>
               <label htmlFor="budget" className={labelClass}>
-                {t.labelBudget}
+                {t("contact.budget_label")}
               </label>
               <select
                 id="budget"
@@ -265,11 +175,11 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
                 style={selectStyle}
               >
                 <option value="" className="bg-navy-deep text-kc-white/50">
-                  {t.placeholderBudget}
+                  {t("contact.budget_select")}
                 </option>
                 {budgets.map((b) => (
-                  <option key={b} value={b} className="bg-navy-deep text-kc-white">
-                    {b}
+                  <option key={b.value} value={b.value} className="bg-navy-deep text-kc-white">
+                    {b.label}
                   </option>
                 ))}
               </select>
@@ -278,14 +188,14 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
             {/* Mensaje */}
             <div>
               <label htmlFor="message" className={labelClass}>
-                {t.labelMessage}
+                {t("contact.message_label")}
               </label>
               <textarea
                 id="message"
                 rows={3}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder={t.placeholderMessage}
+                placeholder={t("contact.message_placeholder")}
                 className={`${inputBase} resize-none`}
                 disabled={status === "loading"}
               />
@@ -297,17 +207,17 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
               disabled={status === "loading"}
               className="w-full bg-gold px-8 py-4 font-sans text-xs font-[600] uppercase tracking-[0.15em] text-navy-deep transition-all hover:bg-gold-light disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {status === "loading" ? t.sending : t.submit}
+              {status === "loading" ? t("contact.sending") : t("contact.submit")}
             </button>
 
             {status === "error" && (
               <p className="text-center font-sans text-sm font-[400] text-red-400">
-                {t.error}
+                {t("contact.error")}
               </p>
             )}
 
             <p className="text-center font-sans text-[11px] font-[300] text-kc-white/40">
-              {t.privacy}
+              {t("contact.privacy")}
             </p>
           </form>
         </ScrollReveal>
@@ -320,10 +230,10 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
               <Check className="h-8 w-8 text-gold" />
             </div>
             <DialogTitle className="font-sans text-2xl font-[200] tracking-tight text-kc-white">
-              {t.successPopupTitle}
+              {t("contact.popup_title")}
             </DialogTitle>
             <DialogDescription className="font-sans text-base font-[300] leading-relaxed text-kc-white/60">
-              {t.successPopupSub}
+              {t("contact.popup_subtitle")}
             </DialogDescription>
           </DialogHeader>
           <div className="mt-8">
@@ -331,7 +241,7 @@ export function ContactForm({ lang = "es" }: ContactFormProps) {
               onClick={() => setShowSuccessDialog(false)}
               className="w-full bg-gold px-8 py-3 font-sans text-[10px] font-[600] uppercase tracking-[0.2em] text-navy-deep transition-all hover:bg-gold-light"
             >
-              Cerrar
+              {t("contact.popup_close")}
             </button>
           </div>
         </DialogContent>
