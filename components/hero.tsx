@@ -58,16 +58,16 @@ export function Hero() {
           </p>
         </div>
 
-        <div data-animate className="mt-8 md:mt-0 flex w-full max-w-xs flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:gap-6">
+        <div data-animate className="mt-12 md:mt-0 flex w-full max-w-xs flex-col items-center gap-4 sm:max-w-none sm:flex-row sm:gap-6">
           <a
             href="#contacto"
-            className="inline-flex w-full items-center justify-center bg-gold px-8 py-3.5 font-sans text-xs font-[600] uppercase tracking-[0.15em] text-navy-deep transition-all hover:bg-gold-light sm:w-auto"
+            className="inline-flex w-full items-center justify-center bg-gold px-8 py-4 font-sans text-[11px] font-[700] uppercase tracking-[0.18em] text-navy-deep shadow-lg shadow-gold/10 transition-all hover:bg-gold-light hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
           >
             {t("hero.cta1")}
           </a>
           <a
             href="#proceso"
-            className="inline-flex w-full items-center justify-center border border-kc-white/30 px-8 py-3.5 font-sans text-xs font-[600] uppercase tracking-[0.15em] text-kc-white transition-all hover:border-gold hover:text-gold sm:w-auto"
+            className="inline-flex w-full items-center justify-center border border-kc-white/20 bg-kc-white/5 backdrop-blur-sm px-8 py-4 font-sans text-[11px] font-[600] uppercase tracking-[0.18em] text-kc-white/90 transition-all hover:border-gold/50 hover:text-gold sm:w-auto"
           >
             {t("hero.cta2")}
           </a>
