@@ -25,9 +25,8 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-navy-deep/95 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-navy-deep/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:py-5">
         <a href="#inicio" className="flex items-center">
@@ -49,10 +48,9 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
-          <LanguageSwitcher />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-kc-white"
+            className="text-kc-white p-2"
             aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -79,6 +77,8 @@ export function Navbar() {
           >
             {t("nav.contacto")}
           </a>
+          <div className="h-px w-10 bg-kc-white/10 my-2" />
+          <LanguageSwitcher />
         </div>
       )}
     </nav>
