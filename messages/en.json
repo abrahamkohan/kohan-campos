@@ -96,6 +96,8 @@
     "subtitle": "Fill out the form and we'll get back to you within 24 hours.",
     "name_label": "Full name",
     "name_placeholder": "Your name",
+    "email_label": "Email address",
+    "email_placeholder": "you@email.com",
     "country_label": "Country of residence",
     "country_select": "Select",
     "budget_label": "Available capital for investment",
