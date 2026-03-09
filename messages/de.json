@@ -96,6 +96,8 @@
     "subtitle": "Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden.",
     "name_label": "Vollständiger Name",
     "name_placeholder": "Ihr Name",
+    "email_label": "E-Mail-Adresse",
+    "email_placeholder": "sie@email.de",
     "country_label": "Wohnsitzland",
     "country_select": "Auswählen",
     "budget_label": "Verfügbares Kapital für Investitionen",
