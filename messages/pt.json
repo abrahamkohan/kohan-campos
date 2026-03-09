@@ -55,7 +55,8 @@
     "c2_desc": "O investimento que já está funcionando quando você compra. Aluguel desde o dia 1, inquilino já validado, fluxo de caixa imediato.",
     "c2_p1": "Aluguel desde o dia 1",
     "c2_p2": "Inquilino já validado",
-    "c2_p3": "Sem obra, sem espera"
+    "c2_p3": "Sem obra, sem espera",
+    "cta": "Consulte-nos"
   },
   "value": {
     "tag": "Proposta de valor",
