@@ -105,8 +105,18 @@
     "submit": "Enviar Consulta",
     "sending": "Enviando...",
     "success": "✓ Consulta enviada. Te contactamos en menos de 24hs.",
+    "popup_title": "¡Consulta enviada!",
+    "popup_subtitle": "Te enviamos una confirmación por correo. Nos pondremos en contacto con vos en menos de 24hs.",
+    "popup_close": "Cerrar",
     "error": "Hubo un error. Por favor escribinos directamente.",
-    "privacy": "Tu información es confidencial. Nunca compartimos datos con terceros."
+    "privacy": "Tu información es confidencial. Nunca compartimos datos con terceros.",
+    "country_arg": "Argentina",
+    "country_bra": "Brasil",
+    "country_pry": "Paraguay",
+    "country_other": "Otro",
+    "budget_30_50": "USD 30k - 50k",
+    "budget_50_100": "USD 50k - 100k",
+    "budget_100plus": "USD 100k+"
   },
   "footer": {
     "tagline": "Real Estate · Paraguay",
