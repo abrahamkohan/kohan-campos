@@ -55,7 +55,8 @@
     "c2_desc": "The investment that is already working when you buy it. Rent from day 1, tenant already validated, immediate cash flow.",
     "c2_p1": "Rent from day 1",
     "c2_p2": "Tenant already validated",
-    "c2_p3": "No construction, no waiting"
+    "c2_p3": "No construction, no waiting",
+    "cta": "Consult with us"
   },
   "value": {
     "tag": "Value proposition",
