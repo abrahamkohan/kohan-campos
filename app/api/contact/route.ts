@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: `PY Advisors <${FROM_EMAIL}>`,
+        from: `Kohan & Campos · Real Estate <${FROM_EMAIL}>`,
         to: [email],
         subject: "Tu Guía del Inversor en Paraguay 📩",
         html: `
