@@ -96,6 +96,8 @@
     "subtitle": "Completá el formulario y te contactamos dentro de las 24hs.",
     "name_label": "Nombre completo",
     "name_placeholder": "Tu nombre",
+    "email_label": "Correo electrónico",
+    "email_placeholder": "tu@email.com",
     "country_label": "País de residencia",
     "country_select": "Seleccionar",
     "budget_label": "Capital disponible para inversión",
