@@ -54,6 +54,17 @@ export function Specialties() {
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={500}>
+          <div className="mt-16 flex justify-center">
+            <a
+              href="#contacto"
+              className="inline-flex items-center justify-center bg-gold px-10 py-4 font-sans text-[11px] font-[700] uppercase tracking-[0.2em] text-navy-deep transition-all hover:bg-gold-light hover:scale-[1.02] active:scale-[0.98]"
+            >
+              {t("specialties.cta")}
+            </a>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )
